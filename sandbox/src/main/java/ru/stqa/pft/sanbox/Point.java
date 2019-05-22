@@ -9,7 +9,7 @@ public class Point {
     this.x = x;
   }
 
-  public double area() {
-    return this.y * this.x;
+  public double distance(Point p2) {
+    return Math.sqrt((this.x - p2.x) * (this.x - p2.x) + (this.y - p2.y) * (this.y - p2.y));
   }
 }
