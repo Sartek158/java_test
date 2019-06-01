@@ -3,7 +3,6 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
@@ -44,20 +43,10 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
-
-  public void returnToContactPage() {
-    contactHelper.returnToContactPage();
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 
-  public void submitContactCreation() {
-    contactHelper.submitContactCreation();
-  }
-
-  public void fillContactForm(ContactData contactData) {
-    contactHelper.fillContactForm(contactData);
-  }
-
-  public void initContactCreation() {
-    contactHelper.initContactCreation();
-  }
 }
+
+
