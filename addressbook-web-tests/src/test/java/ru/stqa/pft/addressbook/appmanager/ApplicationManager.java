@@ -11,55 +11,55 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
 
-  private WebDriver wd;
+    private WebDriver wd;
 
-  private ContactHelper contactHelper;
-  private SessionHelper sessionHelper;
-  private NavigationHelper navigationHelper;
-  private GroupHelper groupHelper;
-  private String browser;
+    private ContactHelper contactHelper;
+    private SessionHelper sessionHelper;
+    private NavigationHelper navigationHelper;
+    private GroupHelper groupHelper;
+    private String browser;
 
-  public ApplicationManager(String browser) {
-    this.browser = browser;
-  }
-
-  public void init() {
-    if (browser.equals(BrowserType.FIREFOX)) {
-      wd = new FirefoxDriver();
-    } else if (browser.equals(BrowserType.CHROME)) {
-      wd = new ChromeDriver();
-    } else if (browser.equals(BrowserType.IE)) {
-      wd = new InternetExplorerDriver();
+    public ApplicationManager(String browser) {
+        this.browser = browser;
     }
-    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-    wd.get("http://localhost/addressbook/");
-    groupHelper = new GroupHelper(wd);
-    navigationHelper = new NavigationHelper(wd);
-    sessionHelper = new SessionHelper(wd);
-    contactHelper = new ContactHelper(wd);
-    sessionHelper.login("admin", "secret");
-  }
 
-  private void logout() {
-    groupHelper.wd.findElement(By.linkText("Logout")).click();
-  }
+    public void init() {
+        if (browser.equals(BrowserType.FIREFOX)) {
+            wd = new FirefoxDriver();
+        } else if (browser.equals(BrowserType.CHROME)) {
+            wd = new ChromeDriver();
+        } else if (browser.equals(BrowserType.IE)) {
+            wd = new InternetExplorerDriver();
+        }
+        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        wd.get("http://localhost/addressbook/");
+        groupHelper = new GroupHelper(wd);
+        navigationHelper = new NavigationHelper(wd);
+        sessionHelper = new SessionHelper(wd);
+        contactHelper = new ContactHelper(wd);
+        sessionHelper.login("admin", "secret");
+    }
 
-  public void stop() {
-    logout();
-    wd.quit();
-  }
+    private void logout() {
+        groupHelper.wd.findElement(By.linkText("Logout")).click();
+    }
 
-  public GroupHelper group() {
-    return groupHelper;
-  }
+    public void stop() {
+        logout();
+        wd.quit();
+    }
 
-  public NavigationHelper goTo() {
-    return navigationHelper;
-  }
+    public GroupHelper group() {
+        return groupHelper;
+    }
 
-  public ContactHelper contact() {
-    return contactHelper;
-  }
+    public NavigationHelper goTo() {
+        return navigationHelper;
+    }
+
+    public ContactHelper contact() {
+        return contactHelper;
+    }
 
 }
 
