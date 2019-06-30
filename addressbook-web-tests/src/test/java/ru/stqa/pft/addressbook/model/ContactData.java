@@ -6,12 +6,18 @@ public class ContactData {
     private String firstname;
     private String lastname;
     private String company;
-    private String phone;
-    private String email;
+    private String firstphone;
+    private String firstemail;
     private String bday;
     private String bmonth;
     private String byear;
     private String group;
+    private String secondphone;
+    private String thirdphone;
+    private String secondemail;
+    private String thirdemail;
+    private String address;
+
 
     @Override
     public boolean equals(Object o) {
@@ -38,12 +44,12 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withFirstname(String firstname) {
+    public ContactData withFirstName(String firstname) {
         this.firstname = firstname;
         return this;
     }
 
-    public ContactData withLastname(String lastname) {
+    public ContactData withLastName(String lastname) {
         this.lastname = lastname;
         return this;
     }
@@ -53,13 +59,13 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withPhone(String phone) {
-        this.phone = phone;
+    public ContactData withFirstPhone(String firstphone) {
+        this.firstphone = firstphone;
         return this;
     }
 
-    public ContactData withEmail(String email) {
-        this.email = email;
+    public ContactData withFirstEmail(String firstemail) {
+        this.firstemail = firstemail;
         return this;
     }
 
@@ -83,6 +89,32 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withSecondPhone(String secondphone) {
+        this.secondphone = secondphone;
+        return this;
+    }
+
+    public ContactData withThirdPhone(String thirdphone) {
+        this.thirdphone = thirdphone;
+        return this;
+    }
+
+    public ContactData withSecondEmail(String secondemail) {
+        this.secondemail = secondemail;
+        return this;
+    }
+
+    public ContactData withThirdEmail(String thirdemail) {
+        this.thirdemail = thirdemail;
+        return this;
+    }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+
 
     public int getId() {
         return id;
@@ -101,12 +133,12 @@ public class ContactData {
     }
 
 
-    public String getPhone() {
-        return phone;
+    public String getFirstPhone() {
+        return firstphone;
     }
 
-    public String getEmail() {
-        return email;
+    public String getFirstEmail() {
+        return firstemail;
     }
 
     public String getBday() {
@@ -123,6 +155,27 @@ public class ContactData {
 
     public String getGroup() {
         return group;
+    }
+
+
+    public String getSecondPhone() {
+        return secondphone;
+    }
+
+    public String getThirdPhone() {
+        return thirdphone;
+    }
+
+    public String getSecondEmail() {
+        return secondemail;
+    }
+
+    public String getThirdEmail() {
+        return thirdemail;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     @Override
