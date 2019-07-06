@@ -29,8 +29,13 @@ public class ContactHelper extends HelperBase {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("lastname"), contactData.getLastname());
         type(By.name("company"), contactData.getCompany());
+        type(By.name("address"), contactData.getAddress());
         type(By.name("home"), contactData.getFirstPhone());
+        type(By.name("mobile"), contactData.getSecondPhone());
+        type(By.name("work"), contactData.getThirdPhone());
         type(By.name("email"), contactData.getFirstEmail());
+        type(By.name("email2"), contactData.getSecondEmail());
+        type(By.name("email3"), contactData.getThirdEmail());
         click(By.name("bday"));
         new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
         click(By.name("bmonth"));
@@ -110,11 +115,10 @@ public class ContactHelper extends HelperBase {
             List<WebElement> cells = element.findElements(By.tagName("td"));
             String firstname = cells.get(2).getText();
             String lastname = cells.get(1).getText();
-            String[] phones = cells.get(5).getText().split("\n");
-            String emails = cells.get(4).findElements(By.tagName("a")).stream().map(WebElement::getText).collect(Collectors.joining("\n"));
-            ContactData contact = new ContactData().withId(id).withFirstName(firstname).withLastName(lastname)
-                    .withFirstPhone(phones[0]).withSecondPhone(phones[1]).withSecondPhone(phones[2])
-                    .withFirstEmail(emails).withSecondEmail(emails).withThirdEmail(emails);
+            String address = cells.get(3).getText();
+            String phones = cells.get(5).getText();
+            String emails = cells.get(4).findElements(By.tagName("a")).stream().map(WebElement::getText).collect(Collectors.joining(""));
+            ContactData contact = new ContactData().withId(id).withFirstName(firstname).withLastName(lastname).withPhones(phones).withEmails(emails).withAddress(address);
             contactCache.add(contact);
         }
         return new Contacts(contactCache);
@@ -131,7 +135,7 @@ public class ContactHelper extends HelperBase {
         String firstEmail = wd.findElement(By.name("email")).getAttribute("value");
         String secondEmail = wd.findElement(By.name("email2")).getAttribute("value");
         String thirdEmail = wd.findElement(By.name("email3")).getAttribute("value");
-        String address = wd.findElement(By.name("address2")).getAttribute("value");
+        String address = wd.findElement(By.name("address")).getAttribute("value");
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withFirstName(firstName).withLastName(lastName)
                 .withFirstPhone(firstPhone).withSecondPhone(secondPhone).withThirdPhone(thirdPhone)

@@ -2,22 +2,11 @@ package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
     private int id = Integer.MAX_VALUE;
-    ;
     private String firstname;
     private String lastname;
     private String company;
     private String firstphone;
     private String firstemail;
-    private String bday;
-    private String bmonth;
-    private String byear;
-    private String group;
-    private String secondphone;
-    private String thirdphone;
-    private String secondemail;
-    private String thirdemail;
-    private String address;
-
 
     @Override
     public boolean equals(Object o) {
@@ -38,6 +27,19 @@ public class ContactData {
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         return result;
     }
+
+    private String bday;
+    private String bmonth;
+    private String byear;
+    private String group;
+    private String secondphone;
+    private String thirdphone;
+    private String phones;
+    private String secondemail;
+    private String thirdemail;
+    private String emails;
+    private String address;
+
 
     public ContactData withId(int id) {
         this.id = id;
@@ -99,6 +101,12 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withPhones(String phones){
+        this.phones = phones;
+        return this;
+    }
+
+
     public ContactData withSecondEmail(String secondemail) {
         this.secondemail = secondemail;
         return this;
@@ -106,6 +114,11 @@ public class ContactData {
 
     public ContactData withThirdEmail(String thirdemail) {
         this.thirdemail = thirdemail;
+        return this;
+    }
+
+    public ContactData withEmails(String emails){
+        this.emails = emails;
         return this;
     }
 
@@ -166,12 +179,20 @@ public class ContactData {
         return thirdphone;
     }
 
+    public String getPhones() {
+        return phones;
+    }
+
     public String getSecondEmail() {
         return secondemail;
     }
 
     public String getThirdEmail() {
         return thirdemail;
+    }
+
+    public String getEmails() {
+        return emails;
     }
 
     public String getAddress() {

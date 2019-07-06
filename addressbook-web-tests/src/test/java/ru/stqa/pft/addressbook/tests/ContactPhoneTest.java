@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+public class ContactPhoneTest extends TestBase{
 
 
     @BeforeMethod
@@ -17,10 +18,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
         if (app.contact().count() == 0){
             app.contact().create(new ContactData()
                     .withFirstName("Ivan").withLastName("Medvedev")
-                    .withFirstPhone("+799577").withSecondPhone("+7916020").withThirdPhone("+7965121")
-                    .withAddress("Moscow, Arbat 19, flat 15")
+                    .withFirstPhone("+7(995)77").withSecondPhone("916020").withThirdPhone("965 121 55")
                     .withFirstEmail("nagibator@mail.com").withSecondEmail("gg@gmail.com")
-                    .withThirdEmail("chill@local.org"));
+                    .withBday("1").withBmonth("April").withByear("1991").withGroup("test1")
+                    .withThirdEmail("chill@local.org")
+                    .withAddress("Moscow, Arbat 19, flat 15"));
         }
     }
 
@@ -28,19 +30,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
     public void testContactPhone(){
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
-        assertThat(contact.getFirstPhone(), equalTo(contactInfoFromEditForm.getFirstPhone()));
-        assertThat(contact.getSecondPhone(), equalTo(contactInfoFromEditForm.getSecondPhone()));
-        assertThat(contact.getThirdPhone(), equalTo(contactInfoFromEditForm.getThirdPhone()));
-        assertThat(contact.getFirstEmail(), equalTo(contactInfoFromEditForm.getFirstEmail()));
-        assertThat(contact.getSecondEmail(), equalTo(contactInfoFromEditForm.getSecondEmail()));
-        assertThat(contact.getThirdEmail(), equalTo(contactInfoFromEditForm.getThirdEmail()));
+        assertThat(contact.getPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
+        assertThat(contact.getEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
         assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
-
     }
 
     private String mergeEmails(ContactData contact) {
         return Arrays.asList(contact.getFirstEmail(), contact.getSecondEmail(), contact.getThirdEmail()).stream()
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining());
     }
 
     private String mergePhones(ContactData contact) {
@@ -50,8 +47,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
                 .collect(Collectors.joining("\n"));
     }
 
-    private static String cleaned(String phone){
-        return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
+    private static String cleaned(String phones){
+        return phones.replaceAll("\\s", "").replaceAll("[-()]", "");
     }
 
 }
