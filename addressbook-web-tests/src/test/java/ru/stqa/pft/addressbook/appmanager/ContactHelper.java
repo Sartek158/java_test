@@ -117,7 +117,7 @@ public class ContactHelper extends HelperBase {
             String lastname = cells.get(1).getText();
             String address = cells.get(3).getText();
             String phones = cells.get(5).getText();
-            String emails = cells.get(4).findElements(By.tagName("a")).stream().map(WebElement::getText).collect(Collectors.joining(""));
+            String emails = cells.get(4).findElements(By.tagName("a")).stream().map(WebElement::getText).collect(Collectors.joining("\n"));
             ContactData contact = new ContactData().withId(id).withFirstName(firstname).withLastName(lastname).withPhones(phones).withEmails(emails).withAddress(address);
             contactCache.add(contact);
         }
