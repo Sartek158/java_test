@@ -3,6 +3,9 @@ package ru.stqa.pft.addressbook.generators;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.io.File;
@@ -21,6 +24,9 @@ public class ContactDataGenerator {
     @Parameter(names = "-f", description = "Target file")
     public String file;
 
+    @Parameter(names = "-d", description = "Data format")
+    public String format;
+
     public static void main(String[] args) throws IOException {
         ContactDataGenerator generator = new ContactDataGenerator();
         JCommander jCommander = new JCommander(generator);
@@ -34,11 +40,21 @@ public class ContactDataGenerator {
     }
 
     private void run() throws IOException {
-        List<ContactData> contacts = generateContact(count);
-        save(contacts, new File(file));
+        List<ContactData> contacts = generateContacts(count);
+        if (format.equals("csv")) {
+            saveAsCsv(contacts, new File(file));
+        } else {
+            if (format.equals("xml")){
+                saveAsXml(contacts, new File(file));
+            } else {
+                if (format.equals("json")) {
+                    saveAsJson(contacts, new File(file));
+                } else System.out.println("Unrecognized format " + format);
+            }
+        }
     }
 
-    private void  save(List<ContactData> contacts, File file) throws IOException {
+    private void  saveAsCsv(List<ContactData> contacts, File file) throws IOException {
         Writer writer = new FileWriter(file);
         for (ContactData contact : contacts) {
             writer.write(String.format("%s:%s:%s:%s:%s:%s:%s:%s:%s\n", contact.getFirstname(), contact.getLastname(), contact.getFirstPhone(), contact.getSecondPhone(), contact.getThirdPhone(), contact.getAddress(), contact.getFirstEmail(), contact.getSecondEmail(), contact.getThirdEmail()));
@@ -46,19 +62,37 @@ public class ContactDataGenerator {
         writer.close();
     }
 
-    private List<ContactData> generateContact(int count) {
+    private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
+        XStream xStream = new XStream();
+        xStream.processAnnotations(ContactData.class);
+        String xml = xStream.toXML(contacts);
+        Writer writer = new FileWriter(file);
+        writer.write(xml);
+        writer.close();
+    }
+
+    private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
+        String json = gson.toJson(contacts);
+        Writer writer = new FileWriter(file);
+        writer.write(json);
+        writer.close();
+    }
+
+
+    private List<ContactData> generateContacts(int count) {
         List<ContactData> contacts = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             contacts.add(new ContactData()
                     .withFirstName(String.format("firstName %s", i))
                     .withLastName(String.format("lastName %s", i))
-                    .withFirstPhone(String.format("+650 65 54 %s", i))
+                    .withFirstPhone(String.format("+721 54 %s", i))
                     .withSecondPhone(String.format("+(99)66 421 564 %s", i))
-                    .withThirdPhone(String.format("9851 3212 132%s", i))
-                    .withAddress(String.format("Wall Stret 19, flat %s", i))
-                    .withFirstEmail(String.format("john%s@smith.org", i))
-                    .withSecondEmail(String.format("j.smith198%s@gmail.com", i))
-                    .withThirdEmail(String.format("john198%s@gmail.com", i))
+                    .withThirdPhone(String.format("9121 3272 132%s", i))
+                    .withAddress(String.format("Veresaeva Street 10, flat 5%s", i))
+                    .withFirstEmail(String.format("ivan%s@random.org", i))
+                    .withSecondEmail(String.format("j.p.bogdan%s@xbox.com", i))
+                    .withThirdEmail(String.format("viktor%s@gmail.com", i))
             );
         }
         return contacts;

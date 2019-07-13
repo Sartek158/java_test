@@ -20,7 +20,6 @@ public class ContactPhoneTest extends TestBase{
                     .withFirstName("Ivan").withLastName("Medvedev")
                     .withFirstPhone("+7(995)77").withSecondPhone("916020").withThirdPhone("965 121 55")
                     .withFirstEmail("nagibator@mail.com").withSecondEmail("gg@gmail.com")
-                    .withBday("1").withBmonth("April").withByear("1991").withGroup("test1")
                     .withThirdEmail("chill@local.org")
                     .withAddress("Moscow, Arbat 19, flat 15"));
         }

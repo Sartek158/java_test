@@ -1,27 +1,38 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+
+import java.beans.Transient;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ContactData {
+    @Expose
     private int id = Integer.MAX_VALUE;
+    @Expose
     private String firstname;
+    @Expose
     private String lastname;
+    @Expose
     private String company;
+    @Expose
     private String firstphone;
+    @Expose
     private String firstemail;
-    private String bday;
-    private String bmonth;
-    private String byear;
-    private String group;
+    @Expose
     private String secondphone;
+    @Expose
     private String thirdphone;
     private String phones;
+    @Expose
     private String secondemail;
+    @Expose
     private String thirdemail;
     private String emails;
+    @Expose
     private String address;
     private File photo;
-
 
 
     public ContactData withPhoto(File photo) {
@@ -57,26 +68,6 @@ public class ContactData {
 
     public ContactData withFirstEmail(String firstemail) {
         this.firstemail = firstemail;
-        return this;
-    }
-
-    public ContactData withBday(String bday) {
-        this.bday = bday;
-        return this;
-    }
-
-    public ContactData withBmonth(String bmonth) {
-        this.bmonth = bmonth;
-        return this;
-    }
-
-    public ContactData withByear(String byear) {
-        this.byear = byear;
-        return this;
-    }
-
-    public ContactData withGroup(String group) {
-        this.group = group;
         return this;
     }
 
@@ -145,22 +136,6 @@ public class ContactData {
 
     public String getFirstEmail() {
         return firstemail;
-    }
-
-    public String getBday() {
-        return bday;
-    }
-
-    public String getBmonth() {
-        return bmonth;
-    }
-
-    public String getByear() {
-        return byear;
-    }
-
-    public String getGroup() {
-        return group;
     }
 
 

@@ -1,0 +1,62 @@
+<list>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <id>2147483647</id>
+    <firstname>firstName 0</firstname>
+    <lastname>lastName 0</lastname>
+    <firstphone>+721 54 0</firstphone>
+    <firstemail>ivan0@random.org</firstemail>
+    <secondphone>+(99)66 421 564 0</secondphone>
+    <thirdphone>9121 3272 1320</thirdphone>
+    <secondemail>j.p.bogdan0@xbox.com</secondemail>
+    <thirdemail>viktor0@gmail.com</thirdemail>
+    <address>Veresaeva Street 10, flat 50</address>
+  </ru.stqa.pft.addressbook.model.ContactData>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <id>2147483647</id>
+    <firstname>firstName 1</firstname>
+    <lastname>lastName 1</lastname>
+    <firstphone>+721 54 1</firstphone>
+    <firstemail>ivan1@random.org</firstemail>
+    <secondphone>+(99)66 421 564 1</secondphone>
+    <thirdphone>9121 3272 1321</thirdphone>
+    <secondemail>j.p.bogdan1@xbox.com</secondemail>
+    <thirdemail>viktor1@gmail.com</thirdemail>
+    <address>Veresaeva Street 10, flat 51</address>
+  </ru.stqa.pft.addressbook.model.ContactData>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <id>2147483647</id>
+    <firstname>firstName 2</firstname>
+    <lastname>lastName 2</lastname>
+    <firstphone>+721 54 2</firstphone>
+    <firstemail>ivan2@random.org</firstemail>
+    <secondphone>+(99)66 421 564 2</secondphone>
+    <thirdphone>9121 3272 1322</thirdphone>
+    <secondemail>j.p.bogdan2@xbox.com</secondemail>
+    <thirdemail>viktor2@gmail.com</thirdemail>
+    <address>Veresaeva Street 10, flat 52</address>
+  </ru.stqa.pft.addressbook.model.ContactData>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <id>2147483647</id>
+    <firstname>firstName 3</firstname>
+    <lastname>lastName 3</lastname>
+    <firstphone>+721 54 3</firstphone>
+    <firstemail>ivan3@random.org</firstemail>
+    <secondphone>+(99)66 421 564 3</secondphone>
+    <thirdphone>9121 3272 1323</thirdphone>
+    <secondemail>j.p.bogdan3@xbox.com</secondemail>
+    <thirdemail>viktor3@gmail.com</thirdemail>
+    <address>Veresaeva Street 10, flat 53</address>
+  </ru.stqa.pft.addressbook.model.ContactData>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <id>2147483647</id>
+    <firstname>firstName 4</firstname>
+    <lastname>lastName 4</lastname>
+    <firstphone>+721 54 4</firstphone>
+    <firstemail>ivan4@random.org</firstemail>
+    <secondphone>+(99)66 421 564 4</secondphone>
+    <thirdphone>9121 3272 1324</thirdphone>
+    <secondemail>j.p.bogdan4@xbox.com</secondemail>
+    <thirdemail>viktor4@gmail.com</thirdemail>
+    <address>Veresaeva Street 10, flat 54</address>
+  </ru.stqa.pft.addressbook.model.ContactData>
+</list>

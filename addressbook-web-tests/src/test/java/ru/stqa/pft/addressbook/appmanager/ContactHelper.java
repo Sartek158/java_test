@@ -37,16 +37,6 @@ public class ContactHelper extends HelperBase {
         type(By.name("email"), contactData.getFirstEmail());
         type(By.name("email2"), contactData.getSecondEmail());
         type(By.name("email3"), contactData.getThirdEmail());
-        click(By.name("bday"));
-        new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
-        click(By.name("bmonth"));
-        new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(contactData.getBmonth());
-        type(By.name("byear"), contactData.getByear());
-        if (creation) {
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-        } else {
-            Assert.assertFalse(isElementPresent(By.name("new_group")));
-        }
     }
 
     public void initContactCreation() {
