@@ -3,8 +3,6 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
@@ -12,6 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ContactHelper extends HelperBase {
+
+    private Contacts contactCache = null;
 
     public ContactHelper(WebDriver wd) {
         super(wd);
@@ -52,7 +52,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void initContactModificationById(int id) {
-        wd.findElement(By.cssSelector("a[href='edit.php?id="+ id +"']")).click();
+        wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
     }
 
     public void submitContactModification() {
@@ -91,8 +91,6 @@ public class ContactHelper extends HelperBase {
     public int count() {
         return wd.findElements(By.name("selected[]")).size();
     }
-
-    private Contacts contactCache = null;
 
     public Contacts all() {
         if (contactCache != null) {

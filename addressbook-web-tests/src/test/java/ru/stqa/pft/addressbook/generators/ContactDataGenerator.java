@@ -44,7 +44,7 @@ public class ContactDataGenerator {
         if (format.equals("csv")) {
             saveAsCsv(contacts, new File(file));
         } else {
-            if (format.equals("xml")){
+            if (format.equals("xml")) {
                 saveAsXml(contacts, new File(file));
             } else {
                 if (format.equals("json")) {
@@ -54,8 +54,8 @@ public class ContactDataGenerator {
         }
     }
 
-    private void  saveAsCsv(List<ContactData> contacts, File file) throws IOException {
-        try(Writer writer = new FileWriter(file)) {
+    private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
+        try (Writer writer = new FileWriter(file)) {
             for (ContactData contact : contacts) {
                 writer.write(String.format("%s:%s:%s:%s:%s:%s:%s:%s:%s\n", contact.getFirstname(), contact.getLastname(), contact.getFirstPhone(), contact.getSecondPhone(), contact.getThirdPhone(), contact.getAddress(), contact.getFirstEmail(), contact.getSecondEmail(), contact.getThirdEmail()));
             }
@@ -66,7 +66,7 @@ public class ContactDataGenerator {
         XStream xStream = new XStream();
         xStream.processAnnotations(ContactData.class);
         String xml = xStream.toXML(contacts);
-        try(Writer writer = new FileWriter(file)) {
+        try (Writer writer = new FileWriter(file)) {
             writer.write(xml);
         }
     }
@@ -74,7 +74,7 @@ public class ContactDataGenerator {
     private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(contacts);
-        try(Writer writer = new FileWriter(file)) {
+        try (Writer writer = new FileWriter(file)) {
             writer.write(json);
         }
     }

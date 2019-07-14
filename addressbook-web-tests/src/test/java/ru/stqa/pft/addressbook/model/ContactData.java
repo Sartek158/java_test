@@ -2,10 +2,7 @@ package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
 
-import java.beans.Transient;
 import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
 
 public class ContactData {
     @Expose
@@ -81,7 +78,7 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withPhones(String phones){
+    public ContactData withPhones(String phones) {
         this.phones = phones;
         return this;
     }
@@ -97,7 +94,7 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withEmails(String emails){
+    public ContactData withEmails(String emails) {
         this.emails = emails;
         return this;
     }
@@ -106,7 +103,6 @@ public class ContactData {
         this.address = address;
         return this;
     }
-
 
 
     public int getId() {
