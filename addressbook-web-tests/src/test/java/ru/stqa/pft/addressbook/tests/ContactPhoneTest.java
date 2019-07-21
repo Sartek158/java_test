@@ -19,7 +19,7 @@ public class ContactPhoneTest extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        if (app.contact().count() == 0) {
+        if (app.db().contacts().size() == 0) {
             app.contact().create(new ContactData()
                     .withFirstName("Ivan").withLastName("Medvedev")
                     .withFirstPhone("+7(995)77").withSecondPhone("916020").withThirdPhone("965 121 55")

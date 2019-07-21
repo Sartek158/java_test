@@ -87,10 +87,10 @@ public class ContactDataGenerator {
                     .withFirstName(String.format("firstName %s", i))
                     .withLastName(String.format("lastName %s", i))
                     .withFirstPhone(String.format("+721 54 %s", i))
+                    .withFirstEmail(String.format("ivan%s@random.org", i))
                     .withSecondPhone(String.format("+(99)66 421 564 %s", i))
                     .withThirdPhone(String.format("9121 3272 132%s", i))
                     .withAddress(String.format("Veresaeva Street 10, flat 5%s", i))
-                    .withFirstEmail(String.format("ivan%s@random.org", i))
                     .withSecondEmail(String.format("j.p.bogdan%s@xbox.com", i))
                     .withThirdEmail(String.format("viktor%s@gmail.com", i))
             );

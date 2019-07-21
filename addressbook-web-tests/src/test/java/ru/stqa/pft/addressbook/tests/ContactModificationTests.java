@@ -12,20 +12,21 @@ public class ContactModificationTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        app.goTo().homePage();
-        if (app.contact().all().size() == 0) {
-            app.contact().create(new ContactData().withFirstName("Ivan").withLastName("Medvedev").withCompany("QA").withFirstPhone("+79269009911").withFirstEmail("root@goofle.com"));
+        if (app.db().contacts().size() == 0) {
+            app.goTo().homePage();
+            app.contact().create(new ContactData().withFirstName("Ivan").withLastName("Medvedev").withFirstPhone("+79269009911").withFirstEmail("root@goofle.com").withSecondPhone("+79167517733").withThirdPhone("+79035218822").withAddress("Veresaeva Street 10, flat 5").withSecondEmail("auto@yandex.ru").withThirdEmail("test@chrome.org"));
         }
     }
 
     @Test
     public void testContactModification() {
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         ContactData modifiedContact = before.iterator().next();
-        ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstName("Ivan").withLastName("Medvedev").withCompany("QA").withFirstPhone("+79269009911").withFirstEmail("root@goofle.com");
+        ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstName("Ivan").withLastName("Medvedev").withFirstPhone("+79269009911").withFirstEmail("root@goofle.com").withSecondPhone("+79167517733").withThirdPhone("+79035218822").withAddress("Veresaeva Street 10, flat 5").withSecondEmail("auto@yandex.ru").withThirdEmail("test@chrome.org");
+        app.goTo().homePage();
         app.contact().modify(contact);
         assertThat(app.contact().count(), equalTo(before.size()));
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
         assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
     }
 

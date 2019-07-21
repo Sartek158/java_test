@@ -29,10 +29,6 @@ public class ContactData {
     private String lastname;
 
     @Expose
-    @Column(name = "company")
-    private String company;
-
-    @Expose
     @Column(name = "home")
     @Type(type = "text")
     private String firstphone;
@@ -52,8 +48,10 @@ public class ContactData {
     @Type(type = "text")
     private String thirdphone;
 
-    @Transient
-    private String phones;
+    @Expose
+    @Column(name = "address")
+    @Type(type = "text")
+    private String address;
 
     @Expose
     @Column(name = "email2")
@@ -66,12 +64,10 @@ public class ContactData {
     private String thirdemail;
 
     @Transient
-    private String emails;
+    private String phones;
 
-    @Expose
-    @Column(name = "address")
-    @Type(type = "text")
-    private String address;
+    @Transient
+    private String emails;
 
     @Transient
     private File photo;
@@ -98,10 +94,6 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withCompany(String company) {
-        this.company = company;
-        return this;
-    }
 
     public ContactData withFirstPhone(String firstphone) {
         this.firstphone = firstphone;
@@ -166,10 +158,39 @@ public class ContactData {
         return photo;
     }
 
-    public String getCompany() {
-        return company;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ContactData that = (ContactData) o;
+
+        if (id != that.id) return false;
+        if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
+        if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+        if (firstphone != null ? !firstphone.equals(that.firstphone) : that.firstphone != null) return false;
+        if (firstemail != null ? !firstemail.equals(that.firstemail) : that.firstemail != null) return false;
+        if (secondphone != null ? !secondphone.equals(that.secondphone) : that.secondphone != null) return false;
+        if (thirdphone != null ? !thirdphone.equals(that.thirdphone) : that.thirdphone != null) return false;
+        if (secondemail != null ? !secondemail.equals(that.secondemail) : that.secondemail != null) return false;
+        if (thirdemail != null ? !thirdemail.equals(that.thirdemail) : that.thirdemail != null) return false;
+        return address != null ? address.equals(that.address) : that.address == null;
     }
 
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+        result = 31 * result + (firstphone != null ? firstphone.hashCode() : 0);
+        result = 31 * result + (firstemail != null ? firstemail.hashCode() : 0);
+        result = 31 * result + (secondphone != null ? secondphone.hashCode() : 0);
+        result = 31 * result + (thirdphone != null ? thirdphone.hashCode() : 0);
+        result = 31 * result + (secondemail != null ? secondemail.hashCode() : 0);
+        result = 31 * result + (thirdemail != null ? thirdemail.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        return result;
+    }
 
     public String getFirstPhone() {
         return firstphone;
@@ -217,25 +238,5 @@ public class ContactData {
                 '}';
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ContactData that = (ContactData) o;
-
-        if (id != that.id) return false;
-        if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-        return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
-        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-        return result;
-    }
 
 }
