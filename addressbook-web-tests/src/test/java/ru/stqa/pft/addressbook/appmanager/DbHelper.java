@@ -51,5 +51,16 @@ public class DbHelper {
         return new Contacts(result);
     }
 
+    public void refreshContact(ContactData contact) {
+        Session session = sessionFactory.openSession();
+        session.refresh(contact);
+        session.close();
+    }
+
+    public void refreshGroup(GroupData group) {
+        Session session = sessionFactory.openSession();
+        session.refresh(group);
+        session.close();
+    }
 
 }
