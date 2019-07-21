@@ -1,34 +1,79 @@
 package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 
+
+@XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+
+    @XStreamOmitField
     @Expose
+    @Id
+    @Column(name = "id")
     private int id = Integer.MAX_VALUE;
+
     @Expose
+    @Column(name = "firstname")
     private String firstname;
+
     @Expose
+    @Column(name = "lastname")
     private String lastname;
+
     @Expose
+    @Column(name = "company")
     private String company;
+
     @Expose
+    @Column(name = "home")
+    @Type(type = "text")
     private String firstphone;
+
     @Expose
+    @Column(name = "email")
+    @Type(type = "text")
     private String firstemail;
+
     @Expose
+    @Column(name = "mobile")
+    @Type(type = "text")
     private String secondphone;
+
     @Expose
+    @Column(name = "work")
+    @Type(type = "text")
     private String thirdphone;
+
+    @Transient
     private String phones;
+
     @Expose
+    @Column(name = "email2")
+    @Type(type = "text")
     private String secondemail;
+
     @Expose
+    @Column(name = "email3")
+    @Type(type = "text")
     private String thirdemail;
+
+    @Transient
     private String emails;
+
     @Expose
+    @Column(name = "address")
+    @Type(type = "text")
     private String address;
+
+    @Transient
     private File photo;
 
 
