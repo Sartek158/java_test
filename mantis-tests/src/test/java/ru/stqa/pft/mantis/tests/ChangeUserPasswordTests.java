@@ -24,7 +24,7 @@ public class ChangeUserPasswordTests extends TestBase {
     public void changePasswordTest() throws MessagingException, IOException {
         Users before = app.db().getUsers();
         User toModify = before.iterator().next();
-        app.ui().loginAsAdmin().toggleMenu().menagement().users();
+        app.ui().loginAsAdmin().management().users();
         String newPassword = String.format("p%s", System.currentTimeMillis());
         app.registration().selectUser(toModify).changePassword();
         List<MailMessage> mailMessages = app.mail().waitForMail(1, 30000);

@@ -21,7 +21,6 @@ public class ApplicationManager {
     private JamesHelper jamesHelper;
     private NavigationHelper navigationHelper;
     private UIHelper uiHelper;
-
     private WebDriver wd;
     private DbHelper dbHelper;
     private SoapHelper soapHelper;
@@ -55,6 +54,24 @@ public class ApplicationManager {
             registrationHelper = new RegistrationHelper(this);
         }
         return registrationHelper;
+    }
+
+    WebDriver getDriver() {
+        if (wd == null) {
+            switch (browser) {
+                case BrowserType.CHROME:
+                    wd = new ChromeDriver();
+                    break;
+                case BrowserType.FIREFOX:
+                    wd = new FirefoxDriver();
+                    break;
+                case BrowserType.IE:
+                    wd = new InternetExplorerDriver();
+                    break;
+            }
+        }
+        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        return wd;
     }
 
     public FtpHelper ftp() {
@@ -99,22 +116,5 @@ public class ApplicationManager {
         return soapHelper;
     }
 
-    WebDriver getDriver() {
-        if (wd == null) {
-            switch (browser) {
-                case BrowserType.CHROME:
-                    wd = new ChromeDriver();
-                    break;
-                case BrowserType.FIREFOX:
-                    wd = new FirefoxDriver();
-                    break;
-                case BrowserType.IE:
-                    wd = new InternetExplorerDriver();
-                    break;
-            }
-        }
-        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        return wd;
-    }
 }
 

@@ -11,23 +11,18 @@ public class UIHelper extends HelperBase {
 
     public UIHelper loginAsAdmin() {
         app.navigate().toLoginPage();
-        By proceedButton = By.cssSelector("input.btn-success");
         String adminLogin = app.getProperty("web.adminLogin");
+        String adminPassword = app.getProperty("web.adminPassword");
         type(By.name("username"), adminLogin);
-        click(proceedButton);
-        type(By.name("password"), app.getProperty("web.adminPassword"));
-        click(proceedButton);
-        Assert.assertTrue(element(By.xpath("//div[@id='breadcrumbs']/ul/li/a")).getText().equals(adminLogin));
+        type(By.name("password"), adminPassword);
+        click(By.cssSelector("[value='Войти']"));
+        Assert.assertTrue(element(By.xpath("/html//span[@id='logged-in-user']")).getText().equals(adminLogin));
         return this;
     }
 
-    public UIHelper toggleMenu() {
-        element(By.id("menu-toggler")).click();
-        return this;
-    }
 
-    public UIHelper menagement() {
-        click(By.xpath("//li/a/span[@class='menu-text'][text()=' Управление ']"));
+    public UIHelper management() {
+        click(By.cssSelector(".manage-menu-link"));
         return this;
     }
 

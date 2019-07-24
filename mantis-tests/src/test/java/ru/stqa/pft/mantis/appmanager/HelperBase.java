@@ -18,12 +18,7 @@ public class HelperBase {
     }
 
     protected void click(By locator) {
-        try {
-            element(locator).click();
-        } catch (ElementNotVisibleException e) {
-            wait.until(wd -> element(locator).isDisplayed());
-            wd.findElement(locator).click();
-        }
+        wd.findElement(locator).click();
     }
 
     protected void type(By locator, String text) {
