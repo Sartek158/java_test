@@ -15,6 +15,6 @@ dependencies {
 
 task testSandbox(type: Test) {
     useTestNG() {
-        suites 'src/test/resources/testng.xml'
+        suites 'src/test/resources/testng-sandbox.xml'
     }
 }
