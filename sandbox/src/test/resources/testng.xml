@@ -1,12 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Tests" verbose="1" >
+<suite name="Tests" verbose="4" >
     <test name="AllTest">
         <classes>
-            <class name="ru.stqa.pft.sanbox.EquationTests"/>
-            <class name="ru.stqa.pft.sanbox.PointTests"/>
-            <class name="ru.stqa.pft.sanbox.PrimeTests"/>
-            <class name="ru.stqa.pft.sanbox.SquareTests"/>
+            <class name="ru.stqa.pft.sandbox.EquationTests"/>
+            <class name="ru.stqa.pft.sandbox.PointTests"/>
+            <class name="ru.stqa.pft.sandbox.PrimeTests"/>
+            <class name="ru.stqa.pft.sandbox.SquareTests"/>
         </classes>
     </test>
 </suite>

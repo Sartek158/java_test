@@ -13,7 +13,7 @@ dependencies {
 }
 
 
-task testAllTest(type: Test) {
+task test(type: Test) {
     useTestNG() {
         suites 'src/test/resources/testng.xml'
     }
